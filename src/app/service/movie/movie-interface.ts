@@ -1,5 +1,10 @@
-export interface headerType {
-  'Content-Type': string;
-  'X-Naver-Client-Id': string;
-  'X-Naver-Client-Secret': string;
+export interface ResultMovieData {
+  actor: string;
+  director: string;
+  image: string;
+  link: string;
+  pubData: string;
+  subTitle: string;
+  title: string;
+  userRating: string;
 }
