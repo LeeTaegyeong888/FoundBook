@@ -21,6 +21,7 @@
   content: attr(placeholder);
   display: block;
   color: #909090;
+  font-size: 3vw;
 }
 .searchEditer {
   background-color: transparent;
