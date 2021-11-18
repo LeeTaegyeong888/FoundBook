@@ -1,11 +1,18 @@
-.background {
+div {
   width: 100vw;
   height: 100vh;
+  position: absolute;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+.background {
+  width: inherit;
+  height: inherit;
   background: url(../background.jpg) no-repeat fixed center;
   background-size: cover;
+  filter: blur(3px);
 }
 .searchContainer {
   height: 5vw;
@@ -24,6 +31,8 @@
   font-size: 3vw;
 }
 .searchEditer {
+  height: 5vw;
+  width: 70%;
   background-color: transparent;
   outline: none;
   min-width: 1px;
