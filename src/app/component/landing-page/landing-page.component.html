@@ -1,14 +1,9 @@
 <div>
   <div class="background"></div>
-  <div
-    class="searchContainer"
-    [ngClass]="{ focus: isFocus }"
-    (click)="onClickInput()"
-  >
-    <div
-      class="searchEditer"
-      contenteditable="true"
-      placeholder="영화를 검색해보세요"
-    ></div>
+  <div class="mainBox">
+    <div class="title">Found Movie</div>
+    <div class="searchContainer" [ngClass]="{ focus: isFocus }" (click)="onClickInput()">
+      <div class="searchEditer" contenteditable="true" placeholder="영화를 검색해보세요"></div>
+    </div>
   </div>
 </div>
