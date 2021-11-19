@@ -1,9 +1,10 @@
 <div>
   <div class="background"></div>
   <div class="mainBox">
-    <div class="title">Found Movie</div>
-    <div class="searchContainer" [ngClass]="{ focus: isFocus }" (click)="onClickInput()">
-      <div class="searchEditer" contenteditable="true" placeholder="영화를 검색해보세요"></div>
+    <div class="title">Found Book</div>
+    <div class="searchContainer">
+      <div #inputField id="inputField" contenteditable="true" placeholder="찾고 싶은 책을 검색하세요." (keyup.enter)="searchBookDatas($event)"></div>
+      <img class="deleteIcon" (click)="deleteSearchValue()" src="..\assets\search_delete_icon.png"/>
     </div>
   </div>
 </div>

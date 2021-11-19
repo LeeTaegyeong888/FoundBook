@@ -1,0 +1,30 @@
+header {
+    position: relative;  
+    width: 5vw;
+}
+.backIcon {
+    width: 4.5vw;
+    height: 4.5vw;
+    margin: 2vw 1vw;
+}
+section {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 5vw);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+article {
+    width: 50%;
+
+}
+.bookItemContainer {
+    width: 40vw;
+    height: 20vh;
+    margin: 5vw 5vw;
+    background-color: aliceblue;
+}

@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './component/components.module';
-import { MovieModule } from './service/movie/movie-module';
+import { BookService } from './service/book/book-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,9 +13,9 @@ import { MovieModule } from './service/movie/movie-module';
     BrowserModule,
     AppRoutingModule,
     ComponentsModule,
-    MovieModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

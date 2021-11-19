@@ -1,3 +1,13 @@
 * {
   margin: 0;
 }
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url(src\assets\background.jpg) no-repeat local center;
+  background-size: cover;
+  background-attachment: scroll;
+  filter: blur(3px);
+}

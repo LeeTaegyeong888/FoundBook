@@ -1,1 +1,16 @@
+<div class="background"></div>
+<header>
+    <img class="backIcon" (click)="onBackPress()" src="..\assets\back_icon.png"/>
+</header>
+<section>
+    <article *ngFor="let book of bookData; index as i; let isLast = last;">
+        <ng-container *ngTemplateOutlet="bookItem; context: {searchBookItem: book}"></ng-container>
+    </article>
+</section>
 
+
+<ng-template #bookItem let-searchBookItem="searchBookItem" let-index="index">
+    <div class="bookItemContainer">
+        {{searchBookItem.title}}
+    </div>
+</ng-template>

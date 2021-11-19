@@ -1,32 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap');
+
 div {
+  display: flex;
   width: 100vw;
   height: 100vh;
   position: relative;
-  display: flex;
   justify-content: center;
   align-items: center;
-}
-.background {
-  width: inherit;
-  height: inherit;
-  position: absolute;
-  background: url(../background.jpg) no-repeat fixed center;
-  background-size: cover;
-  filter: blur(3px);
 }
 .mainBox {
   display: flex;
-  flex-direction: column;
   width: 100%;
   height: 100%;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
 }
 .title {
   width: inherit;
   height: 10%;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 8vw;
+  font-family: 'Do Hyeon', sans-serif;
+  text-shadow: 2px 2px 2px gray;
 }
 .searchContainer {
   height: 5vw;
@@ -34,25 +33,43 @@ div {
   margin-top: 2vw;
   background-color: white;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 20vw;
 }
-.focus {
+.searchContainer:focus-within {
   box-shadow: 0 0 7vw rgb(252, 235, 84);
 }
 [contenteditable="true"]:empty:before {
-  content: attr(placeholder);
   display: block;
-  color: #909090;
+  height: inherit;
+  content: attr(placeholder);
+  font-family: 'Do Hyeon', sans-serif;
   font-size: 3vw;
+  color: #909090;
 }
-.searchEditer {
+
+[contenteditable="true"] div br {
+  display: none;
+}  
+
+#inputField {
+  display: block;
   height: 5vw;
   width: 100%;
-  background-color: transparent;
-  outline: none;
+  margin-left: 2vw;
   min-width: 1px;
+  font-family: 'Do Hyeon', sans-serif;
   font-size: 3vw;
-  display: block;
   white-space: nowrap;
   overflow: hidden;
+  background-color: transparent;
+  outline: none;
+}
+.noSelect {
+  pointer-events: none;
+  white-space: pre;
+}
+.deleteIcon {
+  width: 5vw;
+  height: 5vw;
+  margin-right: 1vw;
 }
