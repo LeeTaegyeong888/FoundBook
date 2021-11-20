@@ -9,5 +9,5 @@
   background: url(src\assets\background.jpg) no-repeat local center;
   background-size: cover;
   background-attachment: scroll;
-  filter: blur(3px);
+  overflow-y: scroll;
 }

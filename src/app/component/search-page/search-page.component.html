@@ -1,12 +1,15 @@
-<div class="background"></div>
-<header>
-    <img class="backIcon" (click)="onBackPress()" src="..\assets\back_icon.png"/>
-</header>
-<section>
-    <article *ngFor="let book of bookData; index as i; let isLast = last;">
-        <ng-container *ngTemplateOutlet="bookItem; context: {searchBookItem: book}"></ng-container>
-    </article>
-</section>
+<div class="background">
+    <div class="blur">
+        <header>
+            <img class="backIcon" (click)="onBackPress()" src="..\assets\home_icon.png"/>
+        </header>
+        <article>
+            <section *ngFor="let book of bookData; index as i; let isLast = last;">
+                <ng-container *ngTemplateOutlet="bookItem; context: {searchBookItem: book}"></ng-container>
+            </section>
+        </article>
+    </div>
+</div>
 
 
 <ng-template #bookItem let-searchBookItem="searchBookItem" let-index="index">
