@@ -8,6 +8,4 @@
   position: absolute;
   background: url(src\assets\background.jpg) no-repeat local center;
   background-size: cover;
-  background-attachment: scroll;
-  overflow-y: scroll;
 }

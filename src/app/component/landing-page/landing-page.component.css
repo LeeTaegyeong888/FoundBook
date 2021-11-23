@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
 
 .mainBox {
   display: flex;
@@ -15,7 +13,7 @@
   width: inherit;
   color: #ffffff;
   font-size: 8vw;
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: 'Song Myung', serif;
   text-shadow: 2px 2px 2px gray;
   text-align: center;
 }
@@ -35,7 +33,7 @@
   display: block;
   height: inherit;
   content: attr(placeholder);
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: 'Song Myung', serif;
   font-size: 3vw;
   color: #909090;
 }
@@ -50,7 +48,7 @@
   width: 100%;
   margin-left: 2vw;
   min-width: 1px;
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: 'Song Myung', serif;
   font-size: 3vw;
   white-space: nowrap;
   overflow: hidden;

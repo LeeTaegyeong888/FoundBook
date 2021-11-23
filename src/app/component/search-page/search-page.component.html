@@ -1,7 +1,12 @@
 <div class="background">
     <div class="blur">
         <header>
-            <img class="backIcon" (click)="onBackPress()" src="..\assets\home_icon.png"/>
+            <div class="dropDownContainer">
+                <img class="menuIcon" (click)="onMenuClick()" src="..\assets\menu_icon.png"/>
+                <div #menuField id="menuField" class="menuContent">
+                    <p (click)="onBackPress()">HOME</p>
+                </div>
+            </div>
         </header>
         <article>
             <section *ngFor="let book of bookData; index as i; let isLast = last;">
