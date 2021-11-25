@@ -59,7 +59,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   onDataChanged(searchData: bookServerData): void {
-    if (!searchData && !this.isLoad) return;
+    if (!searchData || this.isLoad) return;
     console.log('SearchPageComponent  search Data :: ', searchData);
     //this.bookData = searchData.documents;
     this.isEnd = searchData.meta.is_end;
