@@ -48,7 +48,11 @@ export class SearchPageComponent implements OnInit {
     );
   }
   
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.bookData.length === 0) {
+      this.BookService.getBookSearch(this.searchbookTitle, this.defaultSize);
+    }
+  }
 
   ngOnDestroy(): void {
     if (this.searchSub) this.searchSub.unsubscribe();
