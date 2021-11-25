@@ -32,7 +32,6 @@ export class SearchPageComponent implements OnInit {
   private isEnd: boolean = false;
 
   public bookData: bookPropertyData[] = [];
-  public isMoreBookData: boolean = false;
   public isLoad: boolean = false;
 
   @ViewChild('menuField', { read: ElementRef, static: false })
@@ -60,12 +59,11 @@ export class SearchPageComponent implements OnInit {
   }
 
   onDataChanged(searchData: bookServerData): void {
-    if (!searchData) return;
+    if (!searchData && !this.isLoad) return;
     console.log('SearchPageComponent  search Data :: ', searchData);
     //this.bookData = searchData.documents;
     this.isEnd = searchData.meta.is_end;
     this.parseBookData(searchData.documents);
-    this.isMoreBookData = !searchData.meta.is_end;
   }
 
   onBackPress() {
@@ -84,6 +82,7 @@ export class SearchPageComponent implements OnInit {
 
   onMoreSearch() {
     if (!this.isEnd) {
+      this.isLoad = false;
       this.defaultSize += 10;
       console.log('onMoreSearch :: ', this.defaultSize);
       this.BookService.getBookSearch(this.searchbookTitle, this.defaultSize);
