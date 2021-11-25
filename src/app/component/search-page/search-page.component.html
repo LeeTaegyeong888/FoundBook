@@ -1,8 +1,9 @@
 <div class="background">
     <div class="blur">
         <header>
+            <img title="검색 결과를 더 찾으시겠어요?" class="headerIcon moreSearch" (click)="onMoreSearch()" src="..\assets\search_icon.png"/>
             <div class="dropDownContainer">
-                <img class="menuIcon" (click)="onMenuClick()" src="..\assets\menu_icon.png"/>
+                <img class="headerIcon" (click)="onMenuClick()" src="..\assets\menu_icon.png"/>
                 <div #menuField id="menuField" class="menuContent" (click)="onBackPress()">
                     <p>HOME</p>
                 </div>
@@ -13,7 +14,7 @@
                 <ng-container *ngTemplateOutlet="bookItem; context: {searchBookItem: book}"></ng-container>
             </article>
             <article class="noResult" *ngIf="bookData.length === 0">
-                <div class="noResultTxt">찾으려는 책이 없어요ㅜㅜ<br> 홈으로 돌아가 다시 검색하세요.</div>
+                <div class="noResultTxt">찾으려는 책이 없어요.<br> 홈에서 다시 검색하세요.</div>
             </article>
         </section>
     </div>

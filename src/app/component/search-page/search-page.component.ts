@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BookService } from 'src/app/service/book/book-service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   bookDataContent,
   bookServerData,
@@ -27,18 +27,27 @@ interface bookPropertyData {
 })
 export class SearchPageComponent implements OnInit {
   private searchSub: Subscription;
+  private searchbookTitle: string;
+  private defaultSize: number = 10;
+  private isEnd: boolean = false;
 
   public bookData: bookPropertyData[] = [];
   public isMoreBookData: boolean = false;
   public isLoad: boolean = false;
+
   @ViewChild('menuField', { read: ElementRef, static: false })
   menuFieldEle!: ElementRef;
-  constructor(private BookService: BookService, private router: Router) {
+  constructor(
+    private BookService: BookService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.searchbookTitle = this.activatedRoute.snapshot.queryParamMap.get('searchBookTitle') as string;
     this.searchSub = this.BookService.dataChanged$.subscribe(
       this.onDataChanged.bind(this)
     );
   }
-
+  
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
@@ -50,6 +59,7 @@ export class SearchPageComponent implements OnInit {
     if (!searchData) return;
     console.log('SearchPageComponent  search Data :: ', searchData);
     //this.bookData = searchData.documents;
+    this.isEnd = searchData.meta.is_end;
     this.parseBookData(searchData.documents);
     this.isMoreBookData = !searchData.meta.is_end;
   }
@@ -65,6 +75,16 @@ export class SearchPageComponent implements OnInit {
       this.menuFieldEle.nativeElement.classList.remove('menuFieldFocus');
     } else {
       this.menuFieldEle.nativeElement.classList.add('menuFieldFocus');
+    }
+  }
+
+  onMoreSearch() {
+    if (!this.isEnd) {
+      this.defaultSize += 10;
+      console.log('onMoreSearch :: ', this.defaultSize);
+      this.BookService.getBookSearch(this.searchbookTitle, this.defaultSize);
+    } else {
+      window.alert('검색 결과를 다 찾았어요!');
     }
   }
 

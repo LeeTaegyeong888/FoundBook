@@ -16,7 +16,7 @@ header {
     position: sticky;
     background: antiquewhite;
     top:0;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     z-index: 1;
 }
@@ -24,7 +24,7 @@ header {
     display: inline-block;
     position: relative;
 }
-.menuIcon {
+.headerIcon {
     width: 32px;
     height: 32px;
     margin: 1px 10px;
@@ -53,7 +53,7 @@ section {
     max-width: 1096px;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin-top: 30px;
 }
