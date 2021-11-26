@@ -28,9 +28,9 @@ interface bookPropertyData {
 export class SearchPageComponent implements OnInit {
   private searchSub: Subscription;
   private searchbookTitle: string;
-  private defaultSize: number = 10;
-  private isEnd: boolean = false;
 
+  public isEnd: boolean = false;
+  public defaultPage: number = 1;
   public bookData: bookPropertyData[] = [];
   public isLoad: boolean = false;
 
@@ -49,7 +49,7 @@ export class SearchPageComponent implements OnInit {
   
   ngOnInit(): void {
     if (this.bookData.length === 0) {
-      this.BookService.getBookSearch(this.searchbookTitle, this.defaultSize);
+      this.BookService.getBookSearch(this.searchbookTitle, 50, this.defaultPage);
     }
   }
 
@@ -80,15 +80,26 @@ export class SearchPageComponent implements OnInit {
     }
   }
 
-  onMoreSearch() {
-    if (!this.isEnd) {
-      this.isLoad = false;
-      this.defaultSize += 10;
-      console.log('onMoreSearch :: ', this.defaultSize);
-      this.BookService.getBookSearch(this.searchbookTitle, this.defaultSize);
+  onNextSearch() {
+    console.log("this.defaultPage", this.defaultPage);
+    if (this.defaultPage !== 50) {
+      this.defaultPage += 1;
+      this.getBookData(this.defaultPage);
     } else {
-      window.alert('검색 결과를 다 찾았어요!');
+      window.alert('더 이상 검색할 결과가 없어요!!');
     }
+  }
+
+  onPrevSearch() {
+    if (this.defaultPage !== 1) {
+      this.defaultPage -= 1;
+      this.getBookData(this.defaultPage);
+    }
+  }
+
+  getBookData(page: number) {
+    this.isLoad = false;
+    this.BookService.getBookSearch(this.searchbookTitle, 50, page);
   }
 
   goToBookLink(url: string) {

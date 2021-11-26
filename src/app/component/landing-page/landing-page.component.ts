@@ -34,7 +34,7 @@ export class LandingPageComponent implements OnInit {
     event.preventDefault();
     if (event.target.innerText.trim()) {
       this.searchBook = this.inputFieldEle.nativeElement.innerText;
-      this.BookService.getBookSearch(this.searchBook, 10);
+      this.BookService.getBookSearch(this.searchBook, 50, 1);
       this.router.navigate(['./search'], {
         queryParams: { searchBookTitle: this.searchBook },
       });

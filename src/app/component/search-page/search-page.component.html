@@ -1,7 +1,10 @@
 <div class="background">
     <div class="blur">
         <header>
-            <img title="검색 결과를 더 찾으시겠어요?" class="headerIcon moreSearch" (click)="onMoreSearch()" src="..\assets\search_icon.png"/>
+            <div class="iconBox">
+                <img title="이전페이지로 가시겠어요?" *ngIf="defaultPage!==1" class="headerIcon moreSearch" (click)="onPrevSearch()" src="..\assets\prev_icon.png"/>
+                <img title="다음페이지로 가시겠어요?" *ngIf="!isEnd" class="headerIcon moreSearch" (click)="onNextSearch()" src="..\assets\next_icon.png"/>
+            </div>
             <div class="dropDownContainer">
                 <img class="headerIcon" (click)="onMenuClick()" src="..\assets\menu_icon.png"/>
                 <div #menuField id="menuField" class="menuContent" (click)="onBackPress()">
@@ -10,19 +13,29 @@
             </div>
         </header>
         <section>
-            <article *ngFor="let book of bookData; index as i; let isLast = last;">
-                <ng-container *ngTemplateOutlet="bookItem; context: {searchBookItem: book}"></ng-container>
-            </article>
-            <article class="noResult" *ngIf="bookData.length === 0">
-                <div class="noResultTxt">찾으려는 책이 없어요.<br> 홈에서 다시 검색하세요.</div>
+            <article>
+                <div class="loading-container" *ngIf="!isLoad">
+                    <div class="loading"></div>
+                    <div id="loading-text">loading</div>
+                </div>
+                <ng-container *ngIf="isLoad">
+                    <div class="resultInfoContainer">
+                        <div class="countResult">{{bookData.length}}권이 검색되었습니다!</div>
+                    </div>
+                    <div class="resultBookData" *ngFor="let book of bookData; index as i; let isLast = last;">
+                        <ng-container *ngTemplateOutlet="bookItem; context: {searchBookItem: book}"></ng-container>
+                    </div>
+                </ng-container>
+                <div class="noResult" *ngIf="bookData.length === 0">
+                    <div class="noResultTxt">찾으려는 책이 없어요.<br> 홈에서 다시 검색하세요.</div>
+                </div>
             </article>
         </section>
     </div>
 </div>
 
-
 <ng-template #bookItem let-searchBookItem="searchBookItem" let-index="index">
-    <div class="bookItemContainer" *ngIf="isLoad" (click)="goToBookLink(searchBookItem.url)">
+    <div class="bookItemContainer" (click)="goToBookLink(searchBookItem.url)">
         <div class="thumbnail_container">
             <img class="bookImg" [src]= "searchBookItem.thumbnail"/>
         </div>

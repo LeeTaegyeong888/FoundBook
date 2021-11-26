@@ -9,7 +9,7 @@ export class BookService {
 
   constructor(public http: HttpClient) {}
 
-  getBookSearch(searchBook: string, size: number) {
+  getBookSearch(searchBook: string, size: number, page: number) {
     console.log('searchBook :: ', searchBook, " size:: ", size);
     const api_url = 'https://dapi.kakao.com/v3/search/book?target=title';
     const options = {
@@ -17,6 +17,7 @@ export class BookService {
     };
     const params = {
       query: searchBook,
+      page: page,
       size: size
     };
     this.http.get(api_url, { headers: options, params: params }).subscribe({
@@ -29,36 +30,4 @@ export class BookService {
       },
     });
   }
-
-  storageAvailable(type: any): boolean {
-    console.log('storageAvailable +++');
-
-    let isStorage;
-    try {
-      isStorage = window[type];
-      let testStorage = 'test_storage';
-      localStorage.setItem(testStorage, testStorage);
-      localStorage.removeItem(testStorage);
-      console.log('check localstorage :: ', localStorage);
-      return true;
-    } catch (error) {
-      if (
-        error instanceof DOMException &&
-        (error.code === 22 ||
-          error.code === 1014 ||
-          error.name === 'QuotaExceededError' ||
-          error.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-        isStorage &&
-        isStorage.length !== 0
-      ) {
-        return false;
-      }
-
-      console.error('DisAvailable storage :: ', error);
-    }
-
-    return false;
-  }
-
-  saveSearchData(searchData: string) {}
 }
