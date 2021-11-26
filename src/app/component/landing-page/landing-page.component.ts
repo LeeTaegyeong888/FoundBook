@@ -8,27 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing-page.component.css'],
 })
 export class LandingPageComponent implements OnInit {
-  private searchSub: Subscription;
-
   public searchBook: string = '';
+
   @ViewChild('inputField', { read: ElementRef, static: false })
   inputFieldEle!: ElementRef;
 
   constructor(private BookService: BookService, private router: Router) {
-    this.searchSub = this.BookService.dataChanged$.subscribe(
-      this.onDataChanged.bind(this)
-    );
   }
 
   ngOnInit(): void {}
 
-  ngOnDestroy(): void {
-    if (this.searchSub) this.searchSub.unsubscribe();
-  }
-  onDataChanged(searchData: any): void {
-    if (!searchData) return;
-    console.log(' search Data :: ', searchData);
-  }
+  ngOnDestroy(): void {}
 
   searchBookDatas(event: any) {
     event.preventDefault();
